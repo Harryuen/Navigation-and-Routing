@@ -1,23 +1,21 @@
 // App.jsx
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import ToDoList from './ToDoList'; // Ensure this import statement is correct
-import ToDoForm from './ToDoForm'; // Ensure this import statement is correct
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import AboutScreen from './src/screens/AboutScreen';
 
-const App = () => {
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ToDoList />
-      <ToDoForm />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-});
+}
 
 export default App;
